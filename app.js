@@ -44,6 +44,22 @@ function localStr() {
 
     }
 }
+let register = () => {
+    var email = document.getElementById("inputEmail")
+    var password = document.getElementById("inputPassword")
+    firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
+    .then((res) => {
+      // Signed in 
+     console.log("data ah gya==>",res.user)
+    })
+    .catch((error) => {
+    
+    console.log(error.message)
+ 
+      
+    });
+       
+}
 
 
 
