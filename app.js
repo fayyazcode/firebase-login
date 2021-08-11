@@ -55,7 +55,9 @@ let register = () => {
     .catch((error) => {
     
     console.log(error.message)
- 
+    if(error.message == "The email address is already in use by another account."){
+        alert("The email address is already in use by another account.")
+    }
       
     });
        
