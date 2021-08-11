@@ -15,7 +15,7 @@ function gotohome() {
             var user = res.user;
             loaderSignin.style.display="none"
             signinText.style.display="block"
-            console.log("login ho gya",res.user)
+           window.location="home.html"
 
             // ...
         })
