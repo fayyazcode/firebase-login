@@ -61,17 +61,26 @@ let register = () => {
    let signupText = document.getElementById("signupText")
    let loader = document.getElementById("loader")
    let success= document.getElementById("success")
+   loader.style.marginLleft="50%";
         loader.style.display="inline-block"
-        loader.style.marginLleft="50%";
         signupText.style.display="none"
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
     .then((res) => {
       // Signed in 
+      
+      loader.style.display="none"
+      signupText.style.display="inline-block"
       success.style.display="block"
      console.log("data ah gya==>",res.user)
+     setTimeout(()=>{
+        window.location ="login.html"
+     },1000)
     })
     .catch((error) => {
     
+        loader.style.display="none"
+        signupText.style.display="inline-block"
+
     console.log(error.message)
     if(error.message == "The email address is already in use by another account."){
         errorDiv.innerHTML="The email address is already in use by another account."
