@@ -2,16 +2,16 @@
 
 
 function localStr() {
-    var name = document.getElementById("inputName")
-    var number = document.getElementById("inputNumber")
-    var email = document.getElementById("inputEmail")
-    var password = document.getElementById("inputPassword")
+   let name = document.getElementById("inputName")
+   let number = document.getElementById("inputNumber")
+   let email = document.getElementById("inputEmail")
+   let password = document.getElementById("inputPassword")
     let errorDiv= document.getElementById("errorDiv")
-    let success= document.getElementById("success")
-    var emailc = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    var userc = /^[a-z0-9_-]{3,16}$/;
-    var numc = /^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/;
-    var passc = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+   
+   let emailc = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+   let userc = /^[a-z0-9_-]{3,16}$/;
+   let numc = /^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/;
+   let passc = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
     let user = {
         name: name.value,
@@ -27,7 +27,7 @@ function localStr() {
                 errorDiv.style.display="none"
                 if (passc.test(password.value)) {
                     register()
-                    success.style.display="block"
+                  
                     errorDiv.style.display="none"
                 }
                 else {
@@ -56,20 +56,27 @@ function localStr() {
     }
 }
 let register = () => {
-    var email = document.getElementById("inputEmail")
-    var password = document.getElementById("inputPassword")
-    var signupText = document.getElementById("signupText")
-    var loader = document.getElementById("loader")
+   let email = document.getElementById("inputEmail")
+   let password = document.getElementById("inputPassword")
+   let signupText = document.getElementById("signupText")
+   let loader = document.getElementById("loader")
+   let success= document.getElementById("success")
+        loader.style.display="inline-block"
+        loader.style.marginLleft="50%";
+        signupText.style.display="none"
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
     .then((res) => {
       // Signed in 
+      success.style.display="block"
      console.log("data ah gya==>",res.user)
     })
     .catch((error) => {
     
     console.log(error.message)
     if(error.message == "The email address is already in use by another account."){
-        alert("The email address is already in use by another account.")
+        errorDiv.innerHTML="The email address is already in use by another account."
+        errorDiv.style.display="block"
+    
     }
       
     });
