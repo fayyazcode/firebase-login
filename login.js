@@ -6,8 +6,9 @@ function gotohome() {
     firebase.auth().signInWithEmailAndPassword(email.value, password.value)
         .then((userCredential) => {
             // Signed in
-            var user = userCredential.user;
-            console.log("login ho gya",userCredential.user)
+            var user = res.user;
+            console.log("login ho gya",res.user)
+
             // ...
         })
         .catch((error) => {

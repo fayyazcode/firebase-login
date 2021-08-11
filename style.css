@@ -12,5 +12,13 @@ body {
     background: #654ea3;
     background: linear-gradient(to right, #e96443, #904e95);
     min-height: 100vh;
-    overflow-x: hidden
+    overflow-x: hidden;
+    height: 100vh;
+
+}
+
+.card-body{
+    background-color: rgba(234, 255, 249, 0.144);
+    border-radius: 20px;
+    box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.102);
 }
