@@ -13,12 +13,7 @@ function localStr() {
    let numc = /^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/;
    let passc = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
-    let user = {
-        name: name.value,
-        number: number.value,
-        email: email.value,
-        password: password.value
-    }
+ 
     if (userc.test(name.value)) {
         errorDiv.style.display="none"
         if (numc.test(number.value)) {
@@ -56,6 +51,8 @@ function localStr() {
     }
 }
 let register = () => {
+    let name = document.getElementById("inputName")
+    let number = document.getElementById("inputNumber")
    let email = document.getElementById("inputEmail")
    let password = document.getElementById("inputPassword")
    let signupText = document.getElementById("signupText")
@@ -66,8 +63,12 @@ let register = () => {
         signupText.style.display="none"
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
     .then((res) => {
-      // Signed in 
-      
+      firebase.database().ref(`users)`).set({
+        name: name.value,
+        number: number.value,
+        email: email.value,
+        password: password.value
+      })
       loader.style.display="none"
       signupText.style.display="inline-block"
       success.style.display="block"
