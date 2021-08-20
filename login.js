@@ -10,7 +10,7 @@ function gotohome() {
     loaderSignin.style.display="inline-block"
     signinText.style.display="none"
     firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-        .then((userCredential) => {
+        .then((res) => {
             // Signed in
             var user = res.user;
             loaderSignin.style.display="none"
